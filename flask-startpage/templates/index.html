@@ -1,0 +1,300 @@
+<head>
+	<script>
+		var weatherApi = "{{ weather_api }}"
+		var weather_lat = "{{ weather_lat }}"
+		var weather_lon = "{{ weather_lon }}"
+		var alphavantageKey = "{{ alphavantage_api }}"
+		var symbol = "{{ alphavantage_symbol }}"
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script src="{{ url_for('static', filename='js/fetchData.js') }}"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+	<title>Startpage</title>
+</head>
+
+<body>
+	<div class="in_grid">
+		<div id="search">
+			<input id="search-bar" type="text" placeholder="&#xF002;" />
+		</div>
+	</div>
+	
+	<div id="row2" class="row">
+		<div class="in_grid">
+			<div id="box3" class="box">
+				<div class="row">
+					<p id="title3" class="title">&lt; s&p 500 price: <span id="snp-price"></span> &gt;</p>
+				</div>
+			</div>
+		</div>
+	
+		<div class="in_grid">
+			<div id="box4" class="box">
+				<p id="title4" class="title">&lt; <span id="month-date"></span> &gt;</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="row1" class="row">
+		<div class="in_grid">
+			<div id="box1" class="box">
+				<div class="row">
+					
+					<p id="title1" class="title">&lt; Common / media &gt;</p>
+					
+					<div id="col-1" class="website-links">
+						<a href="https://chess.com"><p>&gt; chess.com</p></a>
+						<a href="https://lichess.org/"><p>&gt; lichess</p></a>
+						<a href="https://www.imdb.com/"><p>&gt; imdb</p></a>
+						<a href="https://linkedin.com"><p>&gt; linkedin</p></a>
+						<a href="https://facebook.com"><p>&gt; facebook</p></a>
+						<a href="https://reddit.com/r/all"><p>&gt; reddit</p></a>
+						<a href="https://twitter.com"><p>&gt; twitter</p></a>
+						<a href="https://github.com/"><p>&gt; github</p></a>
+					</div>
+					
+					<div id="col-2" class="website-links">
+						<a href="https://youtube.com"><p>&gt; youtube</p></a>
+						<a href="https://netflix.com"><p>&gt; netflix</p></a>
+						<a href="https://twitch.tv"><p>&gt; twitch</p></a>
+						<a href="https://spotify.com"><p>&gt; spotify</p></a>
+						<a href="https://www.last.fm/home"><p>&gt; last.fm</p></a>
+						<a href="https://www.wikipedia.org/"><p>&gt; wikipedia</p></a>
+						<a href="https://mail.google.com/mail/u/0/#inbox"><p>&gt; gmail</p></a>
+						<a href="https://mail.proton.me/u/0/inbox"><p>&gt; proton</p></a>
+						
+					</div>
+
+					
+				</div>
+			</div>
+		</div>
+	
+		<div class="in_grid">
+			<div id="box2" class="box">
+				<div class="row">
+					
+					<p id="title2" class="title">&lt; news / other &gt;</p>
+					
+					<div id="col-1" class="website-links">
+						<a href="https://www.wsj.com/"><p>&gt; wsj</p></a>
+						<a href="https://www.ft.com"><p>&gt; financial times</p></a>
+						<a href="https://www.bloomberg.com/"><p>&gt; bloomberg</p></a>
+						<a href="https://www.economist.com"><p>&gt; the economist</p></a>
+						<a href="https://www.nytimes.com/"><p>&gt; new york times</p></a>
+						<a href="https://www.aljazeera.com"><p>&gt; al jazeera</p></a>
+						<a href="https://www.reuters.com/"><p>&gt; reuters</p></a>
+						<a href="https://www.svd.se"><p>&gt; svenska dagbladet</p></a>
+					</div>
+					
+					<div id="col-2" class="website-links">
+						<a href="https://www.stackoverflow.com"><p>&gt; stackoverflow</p></a>
+						<a href="https://chat.openai.com"><p>&gt; chatGPT</p></a>
+						<a href="https://www.desmos.com/scientific"><p>&gt; desmos</p></a>
+						<a href="https://www.google.com/maps"><p>&gt; google maps</p></a>
+						<a href="https://translate.google.com/"><p>&gt; translate</p></a>
+						<a href="https://arxiv.org/"><p>&gt; arXiv</p></a>
+						<a href="https://www.overleaf.com/project"><p>&gt; overleaf</p></a>
+						<a href="https://store.steampowered.com/"><p>&gt; steam</p></a>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<style>
+	html {
+		min-width: 320px;
+		margin: 0;
+		height: 100%;
+		background-color: #1e212a;
+		background-image: url("static/images/background.jpg");
+    	background-position: center center;
+		background-repeat: repeat;
+    	background-size: cover;
+	}
+	@font-face {
+    font-family: 'hermitlight';
+    src: url('static/fonts/hermit-light-webfont.woff2') format('woff2'),
+         url('static/fonts/hermit-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+	}
+	p {
+		font-family: 'hermitlight';
+		font-size: 13px;
+		text-transform: lowercase;
+		color: white;
+	}
+	a {
+		text-decoration: none;
+	}
+	#search-bar {
+    	width: 100%;
+    	border: 2px solid #bfffaa;
+		color: #bfffaa;
+    	padding: 10px;
+		background-color: rgba(0,0,0,0.5);
+		font-size: 13px;
+		padding-left: 12px;
+		margin-top: 10%;	
+	}
+	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+		font-family:Arial, FontAwesome;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		font-family:Arial, FontAwesome;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+		font-family:Arial, FontAwesome;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		font-family:Arial, FontAwesome;
+	}
+	::-ms-input-placeholder { /* Microsoft Edge */
+		font-family:Arial, FontAwesome;
+	}
+	input[type=text]{
+		font-family: 'hermitlight';
+	}
+	.row {
+		width: 100%;
+	}
+	#row1 {
+		margin-top: 6%;
+	}
+	#box3, #box4 {
+		margin-bottom: 6%;
+	}
+	.in_grid {
+		margin-left: 6%;
+		margin-right: 6%;
+	}
+	#box1, #box2 {
+		width: 45%;
+		height: 300px;
+		background-color: rgba(0,0,0,0.5);
+	}
+	#box3, #box4 {
+		width: 45%;
+		height: 35px;
+		background-color: rgba(0,0,0,0.5);
+	}
+	#box1 {
+		float: left;
+		border: 2px solid #b4eef3;
+	}
+	#box3 {
+		float: left;
+		border: 2px solid #ffe9b4;
+	}
+	#box2 {
+		float: right;
+		border: 2px solid #ffaae9;
+	}
+	#box4 {
+		float: right;
+		border: 2px solid #aab4ff;
+	}
+	#box3, #box4 {
+		margin-top: 6%;
+	}
+	.title {
+		text-align: center;
+		margin-top: 8px !important;
+		padding-bottom: 8px !important;
+		color: white;
+		line-height: 1.8;
+	}
+	#title1 {
+		border-bottom: 2px solid #b4eef3;
+	}
+	#title2 {
+		border-bottom: 2px solid #ffaae9;
+	}
+	#col-2 {
+		float: right;
+	}
+	.website-links p {
+		color: white;
+	}
+	.website-links {
+		width: 34%;
+		float: left;
+		padding-left: 16%;
+		padding-top: 1px;
+	}
+	#news-post-1 {
+		height: 100px;
+	}
+	#news-post-2 {
+		height: 100px;
+	}
+	.right-arr, .fa-heart {
+		color: #ffaae9;
+	}
+	@media (max-width: 1340px) {
+		.website-links {
+			padding-left: 12%;
+		}
+	}
+	@media (max-width: 1200px) {
+		.website-links {
+			width: 43%;
+			padding-left: 7%;
+		}
+	}
+	@media (max-width: 820px) {
+		#box1, #box2 {
+			width: 100%;
+			margin-top: 6%;
+			float: left;
+		}
+		#box2 {
+			margin-bottom: 6%;
+		}
+		.website-links {
+    		width: 34%;
+			padding-left: 12%;
+		}
+		#search-bar {
+			margin-bottom: 6%;
+		}
+	}
+	@media (max-width: 686px) {
+		.website-links {
+			width: 41%;
+			padding-left: 9%;
+		}
+		#box3, #box4 {
+    		width: 100%;
+		}
+		#box4 {
+			float: left;
+		}
+	}
+	@media (max-width: 400px) {
+		.website-links {
+			width: 43%;
+			padding-left: 7%;
+		}
+		#col-2 {
+			float: left;
+		}
+	}
+	@media (max-width: 380px) {
+		.website-links {
+			width: 43%;
+			padding-left: 7%;
+		}
+		#col-2 {
+			float: left;
+		}
+	}
+</style>	
+	
+
+
+</body>
